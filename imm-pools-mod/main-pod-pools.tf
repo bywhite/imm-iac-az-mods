@@ -16,7 +16,7 @@
 resource "intersight_ippool_pool" "ippool_pool" {
   # moid read by: = intersight_ippool_pool.ippool_pool.moid
   name = "${var.policy_prefix}-pool-ip-imc-1"
-  description = var.description
+  description = "${var.description}"
   assignment_order = "sequential"
 
   ip_v4_blocks {
