@@ -28,6 +28,11 @@ variable "tags" {
   default     = []
 }
 
+variable "spt_type" {
+  type        = string
+  description = "Type of Template to create"
+  default     = "vmw1"  
+}
 
 variable "is_x_series_profile" {
   type        = bool

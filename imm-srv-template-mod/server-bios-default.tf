@@ -4,6 +4,8 @@
 # Reference: https://registry.terraform.io/providers/CiscoDevNet/Intersight/latest/docs/resources/bios_policy
 
 resource "intersight_bios_policy" "bios_default_policy" {
+  count = (var.spt_type == "vmw1") ? 1 : 0
+
   name        = "${var.server_policy_prefix}-bios-default-policy"
   description = var.description
   organization {
