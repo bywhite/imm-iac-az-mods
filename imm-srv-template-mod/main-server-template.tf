@@ -97,7 +97,7 @@ resource "intersight_server_profile_template" "server_template_1" {
   # }
   
   policy_bucket {
-    moid = intersight_bios_policy.bios_default_policy.moid
+    moid = intersight_bios_policy.bios_default_policy[0].moid
     object_type = "bios.Policy"
   }
 

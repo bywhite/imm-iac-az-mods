@@ -30,7 +30,7 @@ variable "tags" {
 
 variable "spt_type" {
   type        = string
-  description = "Type of Template to create"
+  description = "Type of server template to create"
   default     = "vmw1"  
 }
 
