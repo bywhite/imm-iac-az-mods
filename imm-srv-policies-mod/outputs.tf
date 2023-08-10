@@ -98,7 +98,6 @@ output "vmedia_policy_map" {
     description = "List of policies" 
     value = {
       "vmedia-1" = intersight_vmedia_policy.vmedia_1.moid
-      "vmedia-2" = intersight_vmedia_policy.vmedia_2.moid
     }
   }
 
