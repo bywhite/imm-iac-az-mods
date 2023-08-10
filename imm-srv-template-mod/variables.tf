@@ -31,7 +31,7 @@ variable "tags" {
 variable "spt_type" {
   type        = string
   description = "Type of server template to create"
-  default     = "vmw1"  
+  default     = "default"  
 }
 
 variable "is_x_series_profile" {
