@@ -189,3 +189,8 @@ variable "syslog_remote_ip"  {
 #   description = "IP address of secondary (alternate) DNS server"
 #   default     = ""
 # }
+
+variable "boot_policy" {
+  type        = string
+  description = "Sets shared boot policy MOID to be used"
+}

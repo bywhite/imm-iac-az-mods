@@ -12,8 +12,8 @@
 output "boot_precision_policy_map" {
     description = "List of precision boot policies" 
     value = {
-      "boot-1" = intersight_boot_precision_policy.boot_precision_policy_1.moid
-      "boot-2" = intersight_boot_precision_policy.boot_precision_policy_2.moid
+      "boot-1" = intersight_boot_precision_policy.boot_1.moid
+      "boot-2" = intersight_boot_precision_policy.boot_2.moid
     }
   }
 

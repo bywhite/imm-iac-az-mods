@@ -4,8 +4,8 @@
 # Examples: https://github.com/terraform-cisco-modules/terraform-intersight-imm/blob/master/examples/policies/boot_order_policies.tf
 # -----------------------------------------------------------------------------
 
-resource "intersight_boot_precision_policy" "boot_precision_policy_2" {
-  name                     = "${var.policy_prefix}-boot-precision-policy-2"
+resource "intersight_boot_precision_policy" "boot_2" {
+  name                     = "${var.policy_prefix}-boot-2"
   description              = var.description
   configured_boot_mode     = "Uefi"
   enforce_uefi_secure_boot = false
