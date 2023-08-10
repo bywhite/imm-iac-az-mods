@@ -96,8 +96,10 @@ resource "intersight_server_profile_template" "server_template_1" {
   #   object_type = "storage.StoragePolicy"
   # }
   
+  
   policy_bucket {
-    moid = intersight_bios_policy.bios_default_policy[0].moid
+    moid = intersight_bios_policy.bios_policy_default.moid
+    #  moid = (var.spt_type == "vmw") ? intersight_bios_policy.bios_policy_vmw1.moid : intersight_bios_policy.bios_policy_default.moid
     object_type = "bios.Policy"
   }
 

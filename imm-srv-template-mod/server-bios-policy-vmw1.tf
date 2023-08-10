@@ -3,11 +3,9 @@
 # -----------------------------------------------------------------------------
 # Reference: https://registry.terraform.io/providers/CiscoDevNet/Intersight/latest/docs/resources/bios_policy
 
-resource "intersight_bios_policy" "bios_default_policy" {
-  count = (var.spt_type == "vmw1") ? 1 : 0
-
-  name        = "${var.server_policy_prefix}-bios-default-policy"
-  description = var.description
+resource "intersight_bios_policy" "bios_policy_vmw1" {
+  name        = "${var.server_policy_prefix}-bios-policy-vmw1"
+  description = "BIOS optimized for vSphere 8.0"
   organization {
     object_type = "organization.Organization"
     moid        = var.organization

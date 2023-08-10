@@ -3,9 +3,9 @@
 # -----------------------------------------------------------------------------
 # Reference: https://registry.terraform.io/providers/CiscoDevNet/Intersight/latest/docs/resources/bios_policy
 
-resource "intersight_bios_policy" "bios_policy1" {
-  name        = "${var.server_policy_prefix}-bios-policy1"
-  description = var.description
+resource "intersight_bios_policy" "bios_policy_win1" {
+  name        = "${var.server_policy_prefix}-bios-policy-win1"
+  description = "Optimized for Windows 2019 bare metal"
   organization {
     object_type = "organization.Organization"
     moid        = var.organization

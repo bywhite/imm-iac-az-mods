@@ -3,10 +3,8 @@
 # -----------------------------------------------------------------------------
 # Reference: https://registry.terraform.io/providers/CiscoDevNet/Intersight/latest/docs/resources/bios_policy
 
-resource "intersight_bios_policy" "bios_default_policy" {
-  count = (var.spt_type == "default") ? 1 : 0
-
-  name        = "${var.server_policy_prefix}-bios-default-policy"
+resource "intersight_bios_policy" "bios_policy_default" {
+  name        = "${var.server_policy_prefix}-bios-policy-default"
   description = var.description
   organization {
     object_type = "organization.Organization"
