@@ -4,8 +4,8 @@
 # Examples: https://github.com/terraform-cisco-modules/terraform-intersight-imm/blob/master/examples/policies/boot_order_policies.tf
 # -----------------------------------------------------------------------------
 
-resource "intersight_boot_precision_policy" "boot_precision_san_legacy_1" {
-  name                     = "${var.policy_prefix}-boot-san-01"
+resource "intersight_boot_precision_policy" "boot_precision_policy_1" {
+  name                     = "${var.policy_prefix}-boot-precision-policy-1"
   description              = "Legacy SAN Boot"
   configured_boot_mode     = "Legacy"
   
