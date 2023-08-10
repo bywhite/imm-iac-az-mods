@@ -6,13 +6,12 @@
 # =============================================================================
 # Server Power Policy
 # -----------------------------------------------------------------------------
-resource "intersight_power_policy" "server_power_x" {
- #may need variables for power_priority  and use var in name "med"
-  name        = "${var.policy_prefix}-server-power-01"
+resource "intersight_power_policy" "power_2" {
+  name        = "${var.policy_prefix}-power-2"
   description              = var.description
   power_priority = "Medium"
   power_profiling = "Enabled"
-  power_restore_state = "LastState"
+  power_restore_state = "AlwaysOff"
   organization {
     moid        = var.organization
     object_type = "organization.Organization"

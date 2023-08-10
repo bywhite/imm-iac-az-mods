@@ -2,55 +2,121 @@
 # Server Module Outputs
 # -----------------------------------------------------------------------------
 
-  output "access_policy_map" {
-    description = "List of precision boot policies" 
+
+output "access_policy_map" {
+    description = "List of policies" 
     value = {
-      "vm-01" = intersight_access_policy.access_1.moid
+      "access-1" = intersight_access_policy.access_1.moid
+      "access-2" = intersight_access_policy.access_2.moid
     }
   }
 
-output "boot_precision_policy_map" {
-    description = "List of precision boot policies" 
+output "bios_policy_map" {
+    description = "List of policies"
+    value = {
+      "bios-1" = intersight_bios_policy.bios_1.moid
+      "bios-2" = intersight_bios_policy.bios_2.moid
+    }
+  }
+
+output "boot_policy_map" {
+    description = "List of policies" 
     value = {
       "boot-1" = intersight_boot_precision_policy.boot_1.moid
       "boot-2" = intersight_boot_precision_policy.boot_2.moid
     }
   }
 
-#  output "ipmioverlan_policy_list" {
-#     description = "List of precision boot policies" 
-#     value = intersight_ipmioverlan_policy.ipmi1
-#  }
-#   output "kvm_policy_list" {
-#     description = "List of precision boot policies" 
-#     value = intersight_kvm_policy.kvmpolicy_1
-#   }
-#   output "vmedia_policy_list" {
-#     description = "List of precision boot policies" 
-#     value = intersight_vmedia_policy.vmedia_1
-#   }
-#   output "power_policy_list" {
-#     description = "List of precision boot policies" 
-#     value = intersight_power_policy.server_power_x
-#   }
+output "ipmi_policy_map" {
+    description = "List of policies" 
+    value = {
+      "ipmi-1" = intersight_ipmioverlan_policy.ipmi_1.moid
+    }
+  }
 
-#   output "snmp_policy_list" {
-#     description = "List of precision boot policies" 
-#     value = intersight_snmp_policy.server_snmp
-#   }
-#   output "syslog_policy_list" {
-#     description = "List of precision boot policies" 
-#     value = intersight_syslog_policy.syslog_policy
-#   }
-#   output "sol_policy_list" {
-#     description = "List of precision boot policies" 
-#     value = intersight_sol_policy.sol1
-#   }
-#   output "storage_policy_list" {
-#     description = "List of precision boot policies" 
-#     value = intersight_storage_storage_policy.server_storage_policy1
-#   }
-#   output "bios_policy_list" {
-#     description = "List of precision boot policies" 
-#     value = intersight_bios_policy.bios_default_policy
-#   }
+output "kvm_policy_map" {
+    description = "List of policies" 
+    value = {
+      "kvm-1" = intersight_kvm_policy.kvm_1.moid
+    }
+  }
+
+output "netcontrol_policy_map" {
+    description = "List of policies" 
+    value = {
+      "netcontrol-1" = intersight_fabric_eth_network_control_policy.netcontrol_1.moid
+    }
+  }
+
+output "netgroup_policy_map" {
+    description = "List of policies" 
+    value = {
+      "netgroup-1" = intersight_fabric_eth_network_group_policy.netgroup_1.moid
+      "netgroup-2" = intersight_fabric_eth_network_group_policy.netgroup_2.moid
+    }
+  }
+
+output "power_policy_map" {
+    description = "List of policies" 
+    value = {
+      "power-1" = intersight_power_policy.power_1.moid
+      "power-2" = intersight_power_policy.power_2.moid
+      "power-3" = intersight_power_policy.power_3.moid
+    }
+  }
+
+output "snmp_policy_map" {
+    description = "List of policies" 
+    value = {
+      "snmp-1" = intersight_snmp_policy.snmp_1.moid
+    }
+  }
+
+output "sol_policy_map" {
+    description = "List of policies" 
+    value = {
+      "sol-1" = intersight_sol_policy.sol_1.moid
+    }
+  }
+
+output "stor_policy_map" {
+    description = "List of policies" 
+    value = {
+      "stor-1" = intersight_storage_storage_policy.stor_1.moid
+      "stor-2" = intersight_storage_storage_policy.stor_2.moid
+    }
+  }
+
+output "syslog_policy_map" {
+    description = "List of policies" 
+    value = {
+      "syslog-1" = intersight_syslog_policy.syslog_1.moid
+    }
+  }
+
+output "vmedia_policy_map" {
+    description = "List of policies" 
+    value = {
+      "vmedia-1" = intersight_vmedia_policy.vmedia_1.moid
+      "vmedia-2" = intersight_vmedia_policy.vmedia_2.moid
+    }
+  }
+
+output "ethtuning_policy_map" {
+    description = "List of policies" 
+    value = {
+      "ethtuning-1" = intersight_vnic_eth_adapter_policy.ethtuning_1.moid
+      "ethtuning-2" = intersight_vnic_eth_adapter_policy.ethtuning_2.moid
+    }
+  }
+
+output "fctuning_policy_map" {
+    description = "List of policies" 
+    value = {
+      "fctuning-1" = intersight_vnic_fc_adapter_policy.fctuning_1.moid
+      "fctuning-2" = intersight_vnic_fc_adapter_policy.fctuning_2.moid
+    }
+  }
+
+
+

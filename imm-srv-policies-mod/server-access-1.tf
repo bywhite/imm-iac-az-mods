@@ -9,7 +9,7 @@
 # -----------------------------------------------------------------------------
 
 resource "intersight_access_policy" "access_1" {
-  name        = "${var.policy_prefix}-imc-access-01"
+  name        = "${var.policy_prefix}-access-1"
   description = var.description
   inband_vlan = var.imc_access_vlan
   inband_ip_pool {

@@ -1,14 +1,15 @@
 # =============================================================================
-#  Serial Over LAN Policies
+#  IPMI Over LAN Policies
 # -----------------------------------------------------------------------------
 
-resource "intersight_sol_policy" "sol1" {
- name        = "${var.policy_prefix}-sol-01"
+# =============================================================================
+# IPMI over LAN (optional)   Used by Server Profile Template
+# -----------------------------------------------------------------------------
+
+resource "intersight_ipmioverlan_policy" "ipmi_1" {
  description = var.description
  enabled     = false
- baud_rate   = 9600
- com_port    = "com1"
- ssh_port    = 1096
+ name        = "${var.policy_prefix}-ipmi-1"
  organization {
    moid        = var.organization
    object_type = "organization.Organization"
@@ -21,4 +22,3 @@ resource "intersight_sol_policy" "sol1" {
    }
  }
 }
-

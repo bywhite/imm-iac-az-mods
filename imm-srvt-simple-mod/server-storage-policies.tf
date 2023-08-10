@@ -1,9 +1,15 @@
 # =============================================================================
-#  Server Storage Policies
+#  Server Storage Related  Policies
+#  - Storage Policy
+#  - 
+#  - 
 # -----------------------------------------------------------------------------
 
+# Comment-out storage policies to remove from policy & then remove from server template policy bucket
+# Also set/remove from server-boot-order.tf
+
 resource "intersight_storage_storage_policy" "server_storage_policy1" {
-  name                     = "${var.policy_prefix}-storage-01"
+  name                     = "${var.server_policy_prefix}-storage-policy-1"
   description              = var.description
   m2_virtual_drive {
     enable      = true
@@ -18,3 +24,4 @@ resource "intersight_storage_storage_policy" "server_storage_policy1" {
   }
   
 }
+
