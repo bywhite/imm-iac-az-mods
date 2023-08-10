@@ -98,8 +98,8 @@ resource "intersight_server_profile_template" "server_template_1" {
   
   
   policy_bucket {
-    moid = intersight_bios_policy.bios_policy_default.moid
-    #  moid = (var.spt_type == "vmw") ? intersight_bios_policy.bios_policy_vmw1.moid : intersight_bios_policy.bios_policy_default.moid
+    # moid = intersight_bios_policy.bios_policy_default.moid
+    moid = (var.spt_type == "vmw1") ? intersight_bios_policy.bios_policy_vmw1.moid : intersight_bios_policy.bios_policy_default.moid
     object_type = "bios.Policy"
   }
 
