@@ -101,19 +101,19 @@ output "vmedia_policy_map" {
     }
   }
 
-output "ethtuning_policy_map" {
+output "adapter_policy_map" {
     description = "List of policies" 
     value = {
-      "ethtuning-1" = intersight_vnic_eth_adapter_policy.ethtuning_1.moid
-      "ethtuning-2" = intersight_vnic_eth_adapter_policy.ethtuning_2.moid
+      "adapter-1" = intersight_vnic_eth_adapter_policy.adapter_1.moid
+      "adapter-2" = intersight_vnic_eth_adapter_policy.adapter_2.moid
     }
   }
 
-output "fctuning_policy_map" {
+output "fcadapter_policy_map" {
     description = "List of policies" 
     value = {
-      "fctuning-1" = intersight_vnic_fc_adapter_policy.fctuning_1.moid
-      "fctuning-2" = intersight_vnic_fc_adapter_policy.fctuning_2.moid
+      "fcadapter-1" = intersight_vnic_fc_adapter_policy.fcadapter_1.moid
+      "fcadapter-2" = intersight_vnic_fc_adapter_policy.fcadapter_2.moid
     }
   }
 

@@ -36,7 +36,7 @@ variable "spt_type" {
 
 variable "is_x_series_profile" {
   type        = bool
-  description = "Is an X-Series Chassis"
+  description = "Is an X-Series"
   default     = true 
 } 
 

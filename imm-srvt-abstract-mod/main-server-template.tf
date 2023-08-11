@@ -32,86 +32,68 @@ resource "intersight_server_profile_template" "server_template_1" {
       object_type = "uuidpool.Pool"
     }
 
-  # the following policy_bucket statements map various policies to this
-  # template -- the object_type shows the policy type
+  # policies are assigned to the template via input variables assigned desired policy moid value
   policy_bucket {
-    #moid        = intersight_boot_precision_policy.boot_precision_1.moid
+    moid = var.access_policy
+    object_type = "access.Policy"
+  }
+  policy_bucket {
+    moid = var.bios_policy
+    object_type = "bios.Policy"
+  }
+  policy_bucket {
     moid        = var.boot_policy
     object_type = "boot.PrecisionPolicy"
   }
  policy_bucket {
-   moid = intersight_ipmioverlan_policy.ipmi1.moid
-   object_type = "ipmioverlan.Policy"
+   moid        = var.ipmi_policy == "none" ? "" : var.ipmi_policy
+   object_type = var.ipmi_policy == "none" ? "" : "ipmioverlan.Policy"
  }
   policy_bucket {
-    moid = intersight_kvm_policy.kvmpolicy_1.moid
+    moid = var.kvm_policy
     object_type = "kvm.Policy"
   }
   policy_bucket {
-    moid = intersight_vmedia_policy.vmedia_1.moid
-    object_type = "vmedia.Policy"
-  }
-  policy_bucket {
-    # moid = intersight_power_policy.server_power_x.moid
-    moid        = var.is_x_series_profile == true ? intersight_power_policy.server_power_x.moid : ""
+    moid        = var.is_x_series_profile == true ? var.power_policy : ""
     object_type = var.is_x_series_profile == true ? "power.Policy" : ""
   }
   policy_bucket {
-    moid = intersight_access_policy.access_1.moid
-    object_type = "access.Policy"
-  }
-  policy_bucket {
-    moid = intersight_snmp_policy.server_snmp.moid
+    moid = var.snmp_policy
     object_type = "snmp.Policy"
   }
-  policy_bucket {
-    moid = intersight_syslog_policy.syslog_policy.moid
-    object_type = "syslog.Policy"
-  }
  policy_bucket {
-   moid = intersight_sol_policy.sol1.moid
+   moid = var.sol_policy
    object_type = "sol.Policy"
  }
+  policy_bucket {
+    moid = var.stor_policy
+    object_type = "storage.StoragePolicy"
+  }
+  policy_bucket {
+    moid = var.syslog_policy
+    object_type = "syslog.Policy"
+  }
+  policy_bucket {
+    moid = var.vmedia_policy
+    object_type = "vmedia.Policy"
+  }
+  # az common user policy
+  policy_bucket {
+    moid = var.user_policy
+    object_type = "iam.EndPointUserPolicy"
+  }
+  # lan connectivity policy per server profile template
   policy_bucket {
     moid = intersight_vnic_lan_connectivity_policy.vnic_lan_1.moid
     object_type = "vnic.LanConnectivityPolicy"
   }
+  # san connectivity policy per server profile template
   policy_bucket {
     moid        = intersight_vnic_san_connectivity_policy.vnic_san_con_1.moid
     object_type = "vnic.SanConnectivityPolicy"
   }
-  
-  # IMC User Policy
-  policy_bucket {
-    moid = var.user_policy_moid
-    object_type = "iam.EndPointUserPolicy"
-  }
-  # policy_bucket {
-  #   moid = intersight_iam_end_point_user_policy.user_policy_1.moid
-  #   object_type = "iam.EndPointUserPolicy"
-  # }
-
-  # No local storage used for this configuration
-  # policy_bucket {
-  #   moid = intersight_storage_storage_policy.server_storage_policy1.moid
-  #   object_type = "storage.StoragePolicy"
-  # }
-  
-  
-  policy_bucket {
-    # moid = intersight_bios_policy.bios_policy_default.moid
-    moid = (var.spt_type == "vmw1") ? intersight_bios_policy.bios_policy_vmw1.moid : intersight_bios_policy.bios_policy_default.moid
-    object_type = "bios.Policy"
-  }
-
-  # policy_bucket {
-  #   moid = intersight_resourcepool_pool.resource_pool.moid
-  #   object_type = "resourcepool.Pool"
-  # }
 
   depends_on = [
-    intersight_vmedia_policy.vmedia_1, intersight_power_policy.server_power_x, intersight_snmp_policy.server_snmp,
-    intersight_syslog_policy.syslog_policy, intersight_vnic_san_connectivity_policy.vnic_san_con_1,
-    intersight_bios_policy.bios_policy_default, 
+    intersight_vnic_san_connectivity_policy.vnic_san_con_1,intersight_vnic_lan_connectivity_policy.vnic_lan_1
   ]
 }

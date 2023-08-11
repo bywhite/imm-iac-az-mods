@@ -27,19 +27,10 @@ variable "tags" {
   description = "user tags to be applied to all policies"
   default     = []
 }
-
-variable "spt_type" {
-  type        = string
-  description = "Type of server template to create"
-  default     = "default"  
-}
-
 variable "is_x_series_profile" {
   type        = bool
-  description = "Is an X-Series Chassis"
-  default     = true 
-} 
-
+  default     = true
+}
 # =============================================================================
 # az Pools used by server template
 # -----------------------------------------------------------------------------
@@ -48,35 +39,84 @@ variable "mac_pool_moid" {
   type         = string
   description = "MAC Pool MOID"
 } 
-
 variable "imc_ip_pool_moid" {
   type = string
   description = "moid of IP_Pool to be assigned to IMC Access Policy"
 }
-
 variable "wwnn_pool_moid" {
   type = string
   description = "moid of WWNN Pool"
 }
-
 variable "wwpn_pool_a_moid" {
   type = string
   description = "moid of WWPN A fabric Pool"
 }
-
 variable "wwpn_pool_b_moid" {
   type = string
   description = "moid of WWPN B fabric Pool"
 }
-
 variable "server_uuid_pool_moid" {
   type = string
   description = "moid of UUID Pool"
 }
-
 variable "server_uuid_pool_name" {
   type = string
   description = "name of UUID Pool"
+}
+
+# =============================================================================
+# az server policies used by server template policy buckets
+# -----------------------------------------------------------------------------
+
+variable "access_policy" {
+  type        = string
+  description = "server policy"
+}
+variable "bios_policy" {
+  type        = string
+  description = "server policy"
+}
+variable "boot_policy" {
+  type        = string
+  description = "server policy"
+}
+variable "ipmi_policy" {
+  type        = string
+  description = "server policy"
+  default     = "none"
+}
+variable "kvm_policy" {
+  type        = string
+  description = "server policy"
+}
+variable "power_policy" {
+  type        = string
+  description = "server policy"
+}
+variable "snmp_policy" {
+  type        = string
+  description = "server policy"
+}
+variable "sol_policy" {
+  type        = string
+  description = "server policy"
+}
+variable "stor_policy" {
+  type        = string
+  description = "server policy"
+}
+variable "syslog_policy" {
+  type        = string
+  description = "server policy"
+}
+variable "vmedia_policy" {
+  type        = string
+  description = "server policy"
+}
+# Provided by imm-imc-user-mod
+variable "user_policy" {
+  type        = string
+  description = "Sets local IMC user ID's, passwords and policies"
 }
 
 
@@ -85,13 +125,17 @@ variable "server_uuid_pool_name" {
 # -----------------------------------------------------------------------------
 
 variable "vnic_vlan_sets" {
-  type       = map(object({
+  type     = map(object({
     vnic_name    = string
     native_vlan  = number
     vlan_range   = string
     switch_id    = string
     pci_order    = number
     qos_moid     = string
+    adapter      = string
+    failover     = string
+    netgroup     = string
+    netcontrol   = string
   }))
   description = "Map of vNic interfaces paired with their vlan range"
   # default = {
@@ -102,6 +146,7 @@ variable "vnic_vlan_sets" {
   #     switch_id   = "A"
   #     pci_order   = 0
   #     qos_moid    = <whatever>
+  #     adapter     = <whatever>
   #   }
   #   "eth1"  = {
   #     vnic_name   = "eth1"
@@ -110,6 +155,7 @@ variable "vnic_vlan_sets" {
   #     switch_id   = "B"
   #     pci_order   =  1
   #     qos_moid    = <whatever>
+  #     adapter     = <whatever>
   #   }
   # }
 }
@@ -126,71 +172,12 @@ variable "vhba_vsan_sets" {
     switch_id      = string
     wwpn_pool_moid = string
     pci_order      = number
-    qos_moid     = string
+    qos_moid       = string
+    fcadapter      = string
   }))
   description = "Map of vNic interfaces paired with their vlan range"
 }
 # Usage: for_each var.vhba_vsan_sets  
 #                 each.value["vhba_name"]  each.value["vsan_moid"]  each.value["switch_id"]   
-#                 each.value["pci_order"]  each.value["wwpn_pool_moid"] each.value["qos_moid"]
+#                 each.value["pci_order"]  each.value["wwpn_pool_moid"] each.value["qos_moid"] each.value["fcadapter"]
 
-# =============================================================================
-# IMC
-# -----------------------------------------------------------------------------
-
-variable "imc_access_vlan" {
-  type        = number
-  description = "ID of VLAN for IMC access"
-}
-variable "server_imc_admin_password" {
-  type        = string
-  description = "password for the local user policy for IMC"
-  default     = "C1sc0123!"
-}
-
-variable "user_policy_moid" {
-  type        = string
-  description = "Sets local IMC user ID's, passwords and policies"
-}
-
-# =============================================================================
-# SNMP & Syslog
-# -----------------------------------------------------------------------------
-
-variable "snmp_password" {
-  type        = string
-  default     = "C1sc0123!"
-}
-variable "snmp_ip"  {
-  type        = string
-  default     = "10.10.10.10"
-}
-
-variable "syslog_remote_ip"  {
-  type        = string
-  default     = "10.10.10.10"
-}
-
-# variable "ntp_servers" {
-#   type        = list(string)
-#   description = "list of NTP servers"
-# }
-# variable "ntp_timezone" {
-#   type        = string
-#   description = "valid timezone as documented at https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/ntp_policy"
-#   default     = "America/Chicago"
-# }
-# variable "dns_preferred" {
-#   type        = string
-#   description = "IP address of primary (preferred) DNS server"
-# }
-# variable "dns_alternate" {
-#   type        = string
-#   description = "IP address of secondary (alternate) DNS server"
-#   default     = ""
-# }
-
-variable "boot_policy" {
-  type        = string
-  description = "Sets shared boot policy MOID to be used"
-}

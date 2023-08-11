@@ -1,40 +1,22 @@
 # =============================================================================
-# vNic Related Server Policies
-#  - Eth Adapter Policy (adapter tuning)
-#  - vNic Eth Interface Policy (eth0, vlans, QoS, MAC, CDP/LLDP etc)
+#  Server Network Configuration
+#  - vNic Eth Interfaces  (eth0, eth1, etc)
+#  - LAN Connectivity Policy per Server Profile Template
 # -----------------------------------------------------------------------------
 
+# =============================================================================
+# LAN Connectivity Policy     per Server Profile Template
+# -----------------------------------------------------------------------------
 
-# Replaced local QoS policy with az-wide vNic QoS Policies as var input
-# resource "intersight_vnic_eth_qos_policy" "v_eth_qos1" {
-#   name           = "${var.server_policy_prefix}-vnic-eth-qos"
-#   description    = var.description
-#   mtu            = 1500
-#   rate_limit     = 0
-#   cos            = 0
-#   burst          = 1024
-#   priority       = "Best Effort"
-#   trust_host_cos = false
-#   organization {
-#     moid = var.organization
-#   }
-#   dynamic "tags" {
-#     for_each = var.tags
-#     content {
-#       key   = tags.value.key
-#       value = tags.value.value
-#     }
-#   }
-# }
-
-# this policy is actually quite complex but we are taking all the defaults
-# Adapter can be tuned for VMware vs Windows Bare Metal vs other (EX: tx-offload)
-# Future Enhancement: add conditional for creation based on nic_optimized_for = "vmw"
-resource "intersight_vnic_eth_adapter_policy" "v_eth_adapter1" {
-  name        = "${var.server_policy_prefix}-vnic-eth-adapter"
-  description = var.description
+resource "intersight_vnic_lan_connectivity_policy" "vnic_lan_1" {
+  name                = "${var.server_policy_prefix}-lan-connectivity"
+  description         = var.description
+  iqn_allocation_type = "None"
+  placement_mode      = "auto"
+  target_platform     = "FIAttached"
   organization {
-    moid = var.organization
+    object_type = "organization.Organization"
+    moid        = var.organization
   }
   dynamic "tags" {
     for_each = var.tags
@@ -46,18 +28,15 @@ resource "intersight_vnic_eth_adapter_policy" "v_eth_adapter1" {
 }
 
 
-
 # =============================================================================
-# vNICs
+# vNIC Interfaces    eth0, eth1, etc
 # -----------------------------------------------------------------------------
 resource "intersight_vnic_eth_if" "eth_if" {
   for_each = var.vnic_vlan_sets
-# each.value["vnic_name"]  each.value["native_vlan"]  each.value["vlan_range"] each.value["switch_id"]
 
-  # other: int_name, switch_id(A/B), vnic_lan_moid[*], adapter_pol_moid[*], qos_moid[*], net_grp_moid[*], ncp_moid  
   name             = each.value["vnic_name"]   # was "${var.server_policy_prefix}-${each.value["vnic_name"]}"
   order            = each.value["pci_order"]   # must be unique across all vNic and vHBA
-  failover_enabled = false
+  failover_enabled = each.value["failover"]
   mac_address_type = "POOL"
   mac_pool {
     moid = var.mac_pool_moid
@@ -87,7 +66,7 @@ resource "intersight_vnic_eth_if" "eth_if" {
     object_type = "vnic.LanConnectivityPolicy"
   }
   eth_adapter_policy {        # Provides for adapter tuning to workload
-    moid = intersight_vnic_eth_adapter_policy.v_eth_adapter1.id
+    moid = each.value["adapter"] 
   }
   eth_qos_policy {            # Unique per eth[*] - Sets Class of Service and MTU
     # Use az-wide vNic QoS policy
@@ -96,10 +75,10 @@ resource "intersight_vnic_eth_if" "eth_if" {
 
   }
   fabric_eth_network_group_policy {   # Unique per eth[*] - Sets VLAN list (2,4,7,1000-1011)
-    moid = intersight_fabric_eth_network_group_policy.fabric_eth_network_group_policy1[each.value["vnic_name"]].moid
+    moid = each.value["netgroup"]
   }
   fabric_eth_network_control_policy {  # Sets CDP LLDP and link down behavior 
-    moid = intersight_fabric_eth_network_control_policy.fabric_eth_network_control_policy1.moid
+    moid = each.value["netcontrol"]
   }
   dynamic "tags" {
     for_each = var.tags
