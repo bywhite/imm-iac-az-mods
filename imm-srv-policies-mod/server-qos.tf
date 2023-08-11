@@ -23,7 +23,7 @@ resource "intersight_vnic_eth_qos_policy" "vnic_besteffort" {
   priority       = "Best Effort"
   trust_host_cos = false
   organization {
-    moid = var.org_id
+    moid = var.organization
   }
 }
 
@@ -37,7 +37,7 @@ resource "intersight_vnic_eth_qos_policy" "vnic_bronze" {
   priority       = "Bronze"
   trust_host_cos = false
   organization {
-    moid = var.org_id
+    moid = var.organization
   }
 }
 
@@ -51,7 +51,7 @@ resource "intersight_vnic_eth_qos_policy" "vnic_silver" {
   priority       = "Silver"
   trust_host_cos = false
   organization {
-    moid = var.org_id
+    moid = var.organization
   }
 }
 
@@ -65,7 +65,7 @@ resource "intersight_vnic_eth_qos_policy" "vnic_gold" {
   priority       = "Gold"
   trust_host_cos = false
   organization {
-    moid = var.org_id
+    moid = var.organization
   }
 }
 
@@ -80,7 +80,7 @@ resource "intersight_vnic_eth_qos_policy" "vnic_gold" {
 #   priority       = "Platinum"
 #   trust_host_cos = false
 #   organization {
-#     moid = var.org_id
+#     moid = var.organization
 #   }
 # }
 
@@ -94,7 +94,7 @@ resource "intersight_vnic_fc_qos_policy" "vnic_fc" {
   max_data_field_size = 2112
   organization {
     object_type = "organization.Organization"
-    moid        = var.org_id
+    moid        = var.organization
   }
 }
 
