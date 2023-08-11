@@ -6,7 +6,7 @@ resource "intersight_storage_storage_policy" "stor_2" {
   name                     = "${var.policy_prefix}-stor-2"
   description              = var.description
   m2_virtual_drive {
-    enable      = true
+    enable      = false
     controller_slot = "MSTOR-RAID-1"
     object_type = "storage.M2VirtualDriveConfig"
   }
