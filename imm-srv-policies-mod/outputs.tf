@@ -84,6 +84,7 @@ output "stor_policy_map" {
     value = {
       "stor-1" = intersight_storage_storage_policy.stor_1.moid
       "stor-2" = intersight_storage_storage_policy.stor_2.moid
+      "stor-3" = intersight_storage_storage_policy.stor_3.moid
     }
   }
 
