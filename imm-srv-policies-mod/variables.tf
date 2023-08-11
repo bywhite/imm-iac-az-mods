@@ -63,9 +63,37 @@ variable "imc_access_vlan" {
   description = "ID of VLAN for IMC access"
 }
 
+# =============================================================================
+# az Pools used by server template
+# -----------------------------------------------------------------------------
+
+variable "mac_pool_moid" {
+  type         = string
+  description = "MAC Pool MOID"
+} 
 variable "imc_ip_pool_moid" {
   type = string
   description = "moid of IP_Pool to be assigned to IMC Access Policy"
+}
+variable "wwnn_pool_moid" {
+  type = string
+  description = "moid of WWNN Pool"
+}
+variable "wwpn_pool_a_moid" {
+  type = string
+  description = "moid of WWPN A fabric Pool"
+}
+variable "wwpn_pool_b_moid" {
+  type = string
+  description = "moid of WWPN B fabric Pool"
+}
+variable "server_uuid_pool_moid" {
+  type = string
+  description = "moid of UUID Pool"
+}
+variable "server_uuid_pool_name" {
+  type = string
+  description = "name of UUID Pool"
 }
 
 
