@@ -58,24 +58,24 @@ resource "intersight_server_profile_template" "server_template_1" {
     object_type = var.is_x_series_profile == true ? "power.Policy" : ""
   }
   policy_bucket {
-    moid = var.snmp_policy
-    object_type = "snmp.Policy"
+    moid        = var.snmp_policy == "none" ? "" : var.snmp_policy
+    object_type = var.snmp_policy == "none" ? "" : "snmp.Policy"
   }
  policy_bucket {
-   moid = var.sol_policy
-   object_type = "sol.Policy"
+   moid        = var.sol_policy == "none" ? "" : var.sol_policy
+   object_type = var.sol_policy == "none" ? "" : "sol.Policy"
  }
    policy_bucket {
    moid        = var.stor_policy == "none" ? "" : var.stor_policy
    object_type = var.stor_policy == "none" ? "" : "storage.StoragePolicy"
  }
   policy_bucket {
-    moid = var.syslog_policy
-    object_type = "syslog.Policy"
+    moid        = var.syslog_policy == "none" ? "" : var.syslog_policy
+    object_type = var.syslog_policy == "none" ? "" : "syslog.Policy"
   }
   policy_bucket {
-    moid = var.vmedia_policy
-    object_type = "vmedia.Policy"
+    moid        = var.vmedia_policy == "none" ? "" : var.vmedia_policy
+    object_type = var.vmedia_policy == "none" ? "" : "vmedia.Policy"
   }
   # az common user policy
   policy_bucket {
