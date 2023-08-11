@@ -157,7 +157,7 @@ resource "intersight_vnic_eth_if" "eth1-4" {
 # -----------------------------------------------------------------------------
 #  eth2
 # -----------------------------------------------------------------------------
-resource "intersight_vnic_eth_if" "eth0-4" {
+resource "intersight_vnic_eth_if" "eth2-4" {
   name             = "${var.policy_prefix}-eth2-4"  #Need unique index per netcon
   order            = 2                  # must be unique across all vNic and vHBA
   failover_enabled = false
