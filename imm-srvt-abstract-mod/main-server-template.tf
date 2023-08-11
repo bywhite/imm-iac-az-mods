@@ -65,10 +65,10 @@ resource "intersight_server_profile_template" "server_template_1" {
    moid = var.sol_policy
    object_type = "sol.Policy"
  }
-  policy_bucket {
-    moid = var.stor_policy
-    object_type = "storage.StoragePolicy"
-  }
+   policy_bucket {
+   moid        = var.stor_policy == "none" ? "" : var.stor_policy
+   object_type = var.stor_policy == "none" ? "" : "storage.StoragePolicy"
+ }
   policy_bucket {
     moid = var.syslog_policy
     object_type = "syslog.Policy"
