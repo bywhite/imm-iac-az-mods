@@ -11,7 +11,7 @@ resource "intersight_storage_storage_policy" "stor_1" {
     object_type = "storage.M2VirtualDriveConfig"
   }
   use_jbod_for_vd_creation = false
-  unused_disks_state       = "NoChange"
+  unused_disks_state       = "UnconfiguredGood" 
   organization {
     object_type = "organization.Organization"
     moid        = var.organization
