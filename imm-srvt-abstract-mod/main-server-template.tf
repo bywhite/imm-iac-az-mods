@@ -57,10 +57,10 @@ resource "intersight_server_profile_template" "server_template_1" {
     moid = var.lancon_policy
     object_type = "vnic.LanConnectivityPolicy"
   }
-  policy_bucket {
-    moid        = var.is_x_series_profile == true ? var.power_policy : ""
-    object_type = var.is_x_series_profile == true ? "power.Policy" : ""
-  }
+  # policy_bucket {
+  #   moid        = var.is_x_series_profile == true ? var.power_policy : ""
+  #   object_type = var.is_x_series_profile == true ? "power.Policy" : ""
+  # }
   policy_bucket {
     moid        = var.sancon_policy
     object_type = "vnic.SanConnectivityPolicy"
