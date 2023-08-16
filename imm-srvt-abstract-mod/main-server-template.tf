@@ -53,9 +53,13 @@ resource "intersight_server_profile_template" "server_template_1" {
    moid        = var.ipmi_policy
    object_type = "ipmioverlan.Policy"
   }
-policy_bucket {
+  policy_bucket {
     moid = var.kvm_policy
     object_type = "kvm.Policy"
+  }
+  policy_bucket {
+    moid = var.lancon_policy
+    object_type = "vnic.LanConnectivityPolicy"
   }
   policy_bucket {
     moid        = var.is_x_series_profile == true ? var.power_policy : ""
@@ -86,12 +90,7 @@ policy_bucket {
     object_type = "iam.EndPointUserPolicy"
   }
   policy_bucket {
-    moid = var.lancon_policy
-    object_type = "vnic.LanConnectivityPolicy"
-  }
-  policy_bucket {
     moid        = var.sancon_policy
     object_type = "vnic.SanConnectivityPolicy"
   }
-
 }
