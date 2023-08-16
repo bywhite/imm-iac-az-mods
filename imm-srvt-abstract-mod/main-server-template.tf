@@ -32,19 +32,19 @@ resource "intersight_server_profile_template" "server_template_1" {
       object_type = "uuidpool.Pool"
     }
 
-#   # policies are assigned to the template via input variables assigned desired policy moid value
-#   policy_bucket {
-#     moid = var.access_policy
-#     object_type = "access.Policy"
-#   }
-#   policy_bucket {
-#     moid = var.bios_policy
-#     object_type = "bios.Policy"
-#   }
-#   policy_bucket {
-#     moid        = var.boot_policy
-#     object_type = "boot.PrecisionPolicy"
-#   }
+  # policies are assigned to the template via input variables assigned desired policy moid value
+  policy_bucket {
+    moid = var.access_policy
+    object_type = "access.Policy"
+  }
+  policy_bucket {
+    moid = var.bios_policy
+    object_type = "bios.Policy"
+  }
+  policy_bucket {
+    moid        = var.boot_policy
+    object_type = "boot.PrecisionPolicy"
+  }
 #  policy_bucket {
 #    moid        = var.ipmi_policy == "none" ? "" : var.ipmi_policy
 #    object_type = var.ipmi_policy == "none" ? "" : "ipmioverlan.Policy"
