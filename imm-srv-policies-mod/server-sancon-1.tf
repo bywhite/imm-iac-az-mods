@@ -1,5 +1,6 @@
 # =============================================================================
 #  SAN Connectivity Policy 1
+# Can only be used with a 2 Eth Port Config
 # -----------------------------------------------------------------------------
 
 # =============================================================================
@@ -49,6 +50,7 @@ resource "intersight_vnic_san_connectivity_policy" "sancon_1" {
 resource "intersight_vnic_fc_if" "fc_if_fc0" { 
   name            = "fc0"
   order           = 2  # PCI Link order must be unique across all vNic's and vHBA's
+                       # Can only be used with a 2 Eth Port config
   placement {
     id            = "1"
     auto_slot_id  = false
