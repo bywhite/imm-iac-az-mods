@@ -32,7 +32,7 @@ resource "intersight_server_profile_template" "server_template_1" {
       object_type = "uuidpool.Pool"
     }
 
-  # policies are assigned to the template via input variables assigned desired policy moid value
+  # policies are assigned to the template via input variables contining policy moids
   policy_bucket {
     moid = var.access_policy
     object_type = "access.Policy"
@@ -45,19 +45,19 @@ resource "intersight_server_profile_template" "server_template_1" {
     moid        = var.boot_policy
     object_type = "boot.PrecisionPolicy"
   }
-#  policy_bucket {
-#    moid        = var.ipmi_policy == "none" ? "" : var.ipmi_policy
-#    object_type = var.ipmi_policy == "none" ? "" : "ipmioverlan.Policy"
-#  }
-#   policy_bucket {
-#     moid = var.kvm_policy
-#     object_type = "kvm.Policy"
-#   }
+ policy_bucket {
+   moid        = var.ipmi_policy == "none" ? "" : var.ipmi_policy
+   object_type = var.ipmi_policy == "none" ? "" : "ipmioverlan.Policy"
+ }
+  policy_bucket {
+    moid = var.kvm_policy
+    object_type = "kvm.Policy"
+  }
 #   # policy_bucket {
 #   #   moid        = var.is_x_series_profile == true ? var.power_policy : ""
 #   #   object_type = var.is_x_series_profile == true ? "power.Policy" : ""
 #   # }
-#   policy_bucket {
+#  policy_bucket {
 #     moid        = var.snmp_policy == "none" ? "" : var.snmp_policy
 #     object_type = var.snmp_policy == "none" ? "" : "snmp.Policy"
 #   }
