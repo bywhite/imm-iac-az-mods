@@ -53,10 +53,10 @@ resource "intersight_server_profile_template" "server_template_1" {
     moid = var.kvm_policy
     object_type = "kvm.Policy"
   }
-  policy_bucket {
-    moid        = var.is_x_series_profile == true ? var.power_policy : ""
-    object_type = var.is_x_series_profile == true ? "power.Policy" : ""
-  }
+  # policy_bucket {
+  #   moid        = var.is_x_series_profile == true ? var.power_policy : ""
+  #   object_type = var.is_x_series_profile == true ? "power.Policy" : ""
+  # }
   policy_bucket {
     moid        = var.snmp_policy == "none" ? "" : var.snmp_policy
     object_type = var.snmp_policy == "none" ? "" : "snmp.Policy"
@@ -82,14 +82,14 @@ resource "intersight_server_profile_template" "server_template_1" {
     moid = var.user_policy
     object_type = "iam.EndPointUserPolicy"
   }
-  policy_bucket {
-    moid = var.lancon_policy
-    object_type = "vnic.LanConnectivityPolicy"
-  }
-  # san connectivity policy per server profile template
-  policy_bucket {
-    moid        = var.sancon_policy
-    object_type = "vnic.SanConnectivityPolicy"
-  }
+  # policy_bucket {
+  #   moid = var.lancon_policy
+  #   object_type = "vnic.LanConnectivityPolicy"
+  # }
+  # # san connectivity policy per server profile template
+  # policy_bucket {
+  #   moid        = var.sancon_policy
+  #   object_type = "vnic.SanConnectivityPolicy"
+  # }
 
 }
