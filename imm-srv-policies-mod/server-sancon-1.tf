@@ -47,7 +47,7 @@ resource "intersight_vnic_san_connectivity_policy" "sancon_1" {
 # =============================================================================
 # vHBA FC Interfacea   fc0, fc1, etc.
 # -----------------------------------------------------------------------------
-resource "intersight_vnic_fc_if" "fc_if_fc0" { 
+resource "intersight_vnic_fc_if" "fc_if_fc0_1" { 
   name            = "fc0"
   order           = 2  # PCI Link order must be unique across all vNic's and vHBA's
                        # Can only be used with a 2 Eth Port config

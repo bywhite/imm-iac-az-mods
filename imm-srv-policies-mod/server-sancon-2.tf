@@ -44,7 +44,7 @@ resource "intersight_vnic_san_connectivity_policy" "sancon_2" {
 # -----------------------------------------------------------------------------
 #  fc0
 # -----------------------------------------------------------------------------
-resource "intersight_vnic_fc_if" "fc_if_fc0" { 
+resource "intersight_vnic_fc_if" "fc_if_fc0_2" { 
   name            = "fc0"
   order           = 4  # PCI Link order must be unique across all vNic's and vHBA's
                       # Can only be used with a 4 Eth Port Config
@@ -84,7 +84,7 @@ resource "intersight_vnic_fc_if" "fc_if_fc0" {
 # -----------------------------------------------------------------------------
 #  fc1
 # -----------------------------------------------------------------------------
-resource "intersight_vnic_fc_if" "fc_if_fc1" { 
+resource "intersight_vnic_fc_if" "fc_if_fc1_2" { 
   name            = "fc1"
   order           = 5  # PCI Link order must be unique across all vNic's and vHBA's
   placement {
@@ -123,7 +123,7 @@ resource "intersight_vnic_fc_if" "fc_if_fc1" {
 # -----------------------------------------------------------------------------
 #  fc2
 # -----------------------------------------------------------------------------
-resource "intersight_vnic_fc_if" "fc_if_fc2" { 
+resource "intersight_vnic_fc_if" "fc_if_fc2_2" { 
   name            = "fc2"
   order           = 6  # PCI Link order must be unique across all vNic's and vHBA's
                       # Can only be used with a 4 Eth Port Config
@@ -163,7 +163,7 @@ resource "intersight_vnic_fc_if" "fc_if_fc2" {
 # -----------------------------------------------------------------------------
 #  fc3
 # -----------------------------------------------------------------------------
-resource "intersight_vnic_fc_if" "fc_if_fc3" { 
+resource "intersight_vnic_fc_if" "fc_if_fc3_2" { 
   name            = "fc3"
   order           = 7  # PCI Link order must be unique across all vNic's and vHBA's
   placement {

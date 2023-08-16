@@ -39,7 +39,7 @@ resource "intersight_vnic_lan_connectivity_policy" "lancon_4" {
 # -----------------------------------------------------------------------------
 #  eth0
 # -----------------------------------------------------------------------------
-resource "intersight_vnic_eth_if" "eth0-4" {
+resource "intersight_vnic_eth_if" "eth0_4" {
   name             = "${var.policy_prefix}-eth0-4"  #Need unique index per netcon
   order            = 0                  # must be unique across all vNic and vHBA
   failover_enabled = false
@@ -97,7 +97,7 @@ resource "intersight_vnic_eth_if" "eth0-4" {
 # -----------------------------------------------------------------------------
 #  eth1
 # -----------------------------------------------------------------------------
-resource "intersight_vnic_eth_if" "eth1-4" {
+resource "intersight_vnic_eth_if" "eth1_4" {
   name             = "${var.policy_prefix}-eth1-4"  #Need unique index per netcon
   order            = 1                  # must be unique across all vNic and vHBA
   failover_enabled = false
@@ -154,7 +154,7 @@ resource "intersight_vnic_eth_if" "eth1-4" {
 # -----------------------------------------------------------------------------
 #  eth2
 # -----------------------------------------------------------------------------
-resource "intersight_vnic_eth_if" "eth-4" {
+resource "intersight_vnic_eth_if" "eth2_4" {
   name             = "${var.policy_prefix}-eth2-4"  #Need unique index per netcon
   order            = 2                  # must be unique across all vNic and vHBA
   failover_enabled = false
@@ -211,7 +211,7 @@ resource "intersight_vnic_eth_if" "eth-4" {
 # -----------------------------------------------------------------------------
 #  eth3
 # -----------------------------------------------------------------------------
-resource "intersight_vnic_eth_if" "eth3-4" {
+resource "intersight_vnic_eth_if" "eth3_4" {
   name             = "${var.policy_prefix}-eth3-4"  #Need unique index per netcon
   order            = 3                  # must be unique across all vNic and vHBA
   failover_enabled = false
