@@ -57,10 +57,10 @@ policy_bucket {
     moid = var.kvm_policy
     object_type = "kvm.Policy"
   }
-#   # policy_bucket {
-#   #   moid        = var.is_x_series_profile == true ? var.power_policy : ""
-#   #   object_type = var.is_x_series_profile == true ? "power.Policy" : ""
-#   # }
+  policy_bucket {
+    moid        = var.is_x_series_profile == true ? var.power_policy : ""
+    object_type = var.is_x_series_profile == true ? "power.Policy" : ""
+  }
   policy_bucket {
     moid        = var.snmp_policy
     object_type = "snmp.Policy"
