@@ -10,7 +10,7 @@
 
 resource "intersight_server_profile_template" "server_template_1" {
   description     = var.description
-  name            = "${var.server_policy_prefix}"
+  name            = "${var.server_template_name}"
   action          = "No-op"
   target_platform = "FIAttached"
 
@@ -54,8 +54,16 @@ resource "intersight_server_profile_template" "server_template_1" {
     object_type = "kvm.Policy"
   }
   policy_bucket {
+    moid = var.lancon_policy
+    object_type = "vnic.LanConnectivityPolicy"
+  }
+  policy_bucket {
     moid        = var.is_x_series_profile == true ? var.power_policy : ""
     object_type = var.is_x_series_profile == true ? "power.Policy" : ""
+  }
+  policy_bucket {
+    moid        = var.sancon_policy
+    object_type = "vnic.SanConnectivityPolicy"
   }
   policy_bucket {
     moid        = var.snmp_policy == "none" ? "" : var.snmp_policy
@@ -74,26 +82,12 @@ resource "intersight_server_profile_template" "server_template_1" {
     object_type = var.syslog_policy == "none" ? "" : "syslog.Policy"
   }
   policy_bucket {
-    moid        = var.vmedia_policy == "none" ? "" : var.vmedia_policy
-    object_type = var.vmedia_policy == "none" ? "" : "vmedia.Policy"
-  }
-  # az common user policy
-  policy_bucket {
     moid = var.user_policy
     object_type = "iam.EndPointUserPolicy"
   }
-  # lan connectivity policy per server profile template
   policy_bucket {
-    moid = intersight_vnic_lan_connectivity_policy.vnic_lan_1.moid
-    object_type = "vnic.LanConnectivityPolicy"
-  }
-  # san connectivity policy per server profile template
-  policy_bucket {
-    moid        = intersight_vnic_san_connectivity_policy.vnic_san_con_1.moid
-    object_type = "vnic.SanConnectivityPolicy"
+    moid        = var.vmedia_policy == "none" ? "" : var.vmedia_policy
+    object_type = var.vmedia_policy == "none" ? "" : "vmedia.Policy"
   }
 
-  depends_on = [
-    intersight_vnic_san_connectivity_policy.vnic_san_con_1,intersight_vnic_lan_connectivity_policy.vnic_lan_1
-  ]
 }

@@ -12,7 +12,7 @@ variable "organization" {
 # Naming and tagging
 # -----------------------------------------------------------------------------
 
-variable "server_policy_prefix" {
+variable "server_template_name" {
   type        = string
   description = "prefix for all servers and server template created"
   #default     = "tf-server"
@@ -27,10 +27,7 @@ variable "tags" {
   description = "user tags to be applied to all policies"
   default     = []
 }
-variable "is_x_series_profile" {
-  type        = bool
-  default     = true
-}
+
 # =============================================================================
 # az Pools used by server template
 # -----------------------------------------------------------------------------
@@ -89,9 +86,17 @@ variable "kvm_policy" {
   type        = string
   description = "server policy"
 }
+variable "lancon_policy" {
+  type        = string
+  default     = "server policy"
+}
 variable "power_policy" {
   type        = string
   description = "server policy"
+}
+variable "sancon_policy" {
+  type        = string
+  default     = "server policy"
 }
 variable "snmp_policy" {
   type        = string
@@ -118,66 +123,3 @@ variable "user_policy" {
   type        = string
   description = "Sets local IMC user ID's, passwords and policies"
 }
-
-
-# =============================================================================
-# Server VLANs per Nic Adapter
-# -----------------------------------------------------------------------------
-
-variable "vnic_vlan_sets" {
-  type     = map(object({
-    vnic_name    = string
-    native_vlan  = number
-    vlan_range   = string
-    switch_id    = string
-    pci_order    = number
-    qos_moid     = string
-    adapter      = string
-    failover     = string
-    netgroup     = string
-    netcontrol   = string
-  }))
-  description = "Map of vNic interfaces paired with their vlan range"
-  # default = {
-  #   "eth0"  = {
-  #     vnic_name   = "eth0"
-  #     native_vlan = 44
-  #     vlan_range  = "44,50,1000-1011"
-  #     switch_id   = "A"
-  #     pci_order   = 0
-  #     qos_moid    = <whatever>
-  #     adapter     = <whatever>
-  #   }
-  #   "eth1"  = {
-  #     vnic_name   = "eth1"
-  #     native_vlan = 44
-  #     vlan_range  = "44,50,1000-1011"
-  #     switch_id   = "B"
-  #     pci_order   =  1
-  #     qos_moid    = <whatever>
-  #     adapter     = <whatever>
-  #   }
-  # }
-}
-# Usage: for_each var.vnic_vlan_sets  each.value["vnic_name"]  each.value["native_vlan"]  each.value["flan_range"]
-
-# =============================================================================
-# Server VSANs per HBA Adapter
-# -----------------------------------------------------------------------------
-
-variable "vhba_vsan_sets" {
-  type       = map(object({
-    vhba_name      = string
-    vsan_moid      = string
-    switch_id      = string
-    wwpn_pool_moid = string
-    pci_order      = number
-    qos_moid       = string
-    fcadapter      = string
-  }))
-  description = "Map of vNic interfaces paired with their vlan range"
-}
-# Usage: for_each var.vhba_vsan_sets  
-#                 each.value["vhba_name"]  each.value["vsan_moid"]  each.value["switch_id"]   
-#                 each.value["pci_order"]  each.value["wwpn_pool_moid"] each.value["qos_moid"] each.value["fcadapter"]
-
