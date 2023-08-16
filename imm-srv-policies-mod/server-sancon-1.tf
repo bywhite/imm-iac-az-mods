@@ -77,7 +77,7 @@ resource "intersight_vnic_fc_if" "fc_if_fc0" {
     object_type = "vnic.FcAdapterPolicy"
   }
   fc_qos_policy {
-    moid = intersight_vnic_fc_qos_policy.vnic_fc
+    moid = intersight_vnic_fc_qos_policy.vnic_fc.moid
     object_type = "vnic.FcQosPolicy"
   }
 }
