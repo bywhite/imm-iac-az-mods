@@ -49,7 +49,11 @@ resource "intersight_server_profile_template" "server_template_1" {
 #    moid        = var.ipmi_policy == "none" ? "" : var.ipmi_policy
 #    object_type = var.ipmi_policy == "none" ? "" : "ipmioverlan.Policy"
 #  }
-  policy_bucket {
+ policy_bucket {
+   moid        = var.ipmi_policy
+   object_type = "ipmioverlan.Policy"
+ }
+policy_bucket {
     moid = var.kvm_policy
     object_type = "kvm.Policy"
   }
