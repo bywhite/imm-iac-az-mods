@@ -75,9 +75,7 @@ resource "intersight_vnic_eth_if" "eth0-3" {
     moid = intersight_vnic_eth_adapter_policy.adapter_1.id
   }
   eth_qos_policy {            # Unique per eth[*] - Sets Class of Service and MTU
-    # Use az-wide vNic QoS policy
     moid = intersight_vnic_eth_qos_policy.vnic_besteffort.moid
-
   }
   fabric_eth_network_group_policy {   # Unique per eth[*] - Sets VLAN list (2,4,7,1000-1011)
     moid = intersight_fabric_eth_network_group_policy.netgroup_1.moid
@@ -134,9 +132,7 @@ resource "intersight_vnic_eth_if" "eth1-3" {
     moid = intersight_vnic_eth_adapter_policy.adapter_1.id
   }
   eth_qos_policy {            # Unique per eth[*] - Sets Class of Service and MTU
-    # Use az-wide vNic QoS policy
     moid = intersight_vnic_eth_qos_policy.vnic_besteffort.moid
-
   }
   fabric_eth_network_group_policy {   # Unique per eth[*] - Sets VLAN list (2,4,7,1000-1011)
     moid = intersight_fabric_eth_network_group_policy.netgroup_1.moid
@@ -192,9 +188,7 @@ resource "intersight_vnic_eth_if" "eth2-3" {
     moid = intersight_vnic_eth_adapter_policy.adapter_1.id
   }
   eth_qos_policy {            # Unique per eth[*] - Sets Class of Service and MTU
-    # Use az-wide vNic QoS policy
     moid = intersight_vnic_eth_qos_policy.vnic_besteffort.moid
-
   }
   fabric_eth_network_group_policy {   # Unique per eth[*] - Sets VLAN list (2,4,7,1000-1011)
     moid = intersight_fabric_eth_network_group_policy.netgroup_1.moid

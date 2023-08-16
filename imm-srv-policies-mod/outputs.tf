@@ -120,3 +120,24 @@ output "fcadapter_policy_map" {
 
 
 
+output "lancon_policy_map" {
+    description = "List of policies" 
+    value = {
+      "lancon-1" = intersight_vnic_lan_connectivity_policy.lancon_1.moid
+      "lancon-2" = intersight_vnic_lan_connectivity_policy.lancon_2.moid
+      "lancon-3" = intersight_vnic_lan_connectivity_policy.lancon_3.moid
+      "lancon-4" = intersight_vnic_lan_connectivity_policy.lancon_4.moid
+    }
+  }
+
+# output "sancon_policy_map" {
+#     description = "List of policies" 
+#     value = {
+#       "sancon-1" = intersight_vnic_san_connectivity_policy.sancon_1.moid
+#       "sancon-2" = intersight_vnic_san_connectivity_policy.sancon_2.moid
+#       "sancon-3" = intersight_vnic_san_connectivity_policy.sancon_3.moid
+#       "sancon-4" = intersight_vnic_san_connectivity_policy.sancon_4.moid
+#     }
+#   }
+
+
