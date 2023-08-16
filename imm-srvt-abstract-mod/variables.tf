@@ -29,6 +29,15 @@ variable "tags" {
 }
 
 # =============================================================================
+# Special policy considerations
+# -----------------------------------------------------------------------------
+variable "is_x_series_profile" {
+  type = bool
+  description = "Is this an X-Series Server?  If so, extra policies apply."
+  default = true
+}
+
+# =============================================================================
 # az Pools used by server template
 # -----------------------------------------------------------------------------
 
