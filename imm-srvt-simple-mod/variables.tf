@@ -74,12 +74,6 @@ variable "server_uuid_pool_moid" {
   description = "moid of UUID Pool"
 }
 
-variable "server_uuid_pool_name" {
-  type = string
-  description = "name of UUID Pool"
-}
-
-
 # =============================================================================
 # Server VLANs per Nic Adapter
 # -----------------------------------------------------------------------------
