@@ -65,10 +65,6 @@ variable "server_uuid_pool_moid" {
   type = string
   description = "moid of UUID Pool"
 }
-variable "server_uuid_pool_name" {
-  type = string
-  description = "name of UUID Pool"
-}
 
 # =============================================================================
 # az server policies used by server template policy buckets
