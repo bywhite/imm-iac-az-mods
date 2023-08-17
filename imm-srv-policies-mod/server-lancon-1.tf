@@ -40,7 +40,7 @@ resource "intersight_vnic_lan_connectivity_policy" "lancon_1" {
 #  eth0
 # -----------------------------------------------------------------------------
 resource "intersight_vnic_eth_if" "eth0_1" {
-  name             = "${var.policy_prefix}-eth0-1"  #Need unique index per netcon
+  name             = "eth0"      #"${var.policy_prefix}-eth0-1"  #Need unique index per netcon
   order            = 0                  # must be unique across all vNic and vHBA
   failover_enabled = true
   mac_address_type = "POOL"

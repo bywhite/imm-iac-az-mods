@@ -40,7 +40,7 @@ resource "intersight_vnic_lan_connectivity_policy" "lancon_2" {
 #  eth0
 # -----------------------------------------------------------------------------
 resource "intersight_vnic_eth_if" "eth0_2" {
-  name             = "${var.policy_prefix}-eth0-2"  #Need unique index per netcon
+  name             = "eth0"       #"${var.policy_prefix}-eth0-2"  #Need unique index per netcon
   order            = 0                  # must be unique across all vNic and vHBA
   failover_enabled = false
   mac_address_type = "POOL"
@@ -97,7 +97,7 @@ resource "intersight_vnic_eth_if" "eth0_2" {
 #  eth1
 # -----------------------------------------------------------------------------
 resource "intersight_vnic_eth_if" "eth1_2" {
-  name             = "${var.policy_prefix}-eth1-2"  #Need unique index per netcon
+  name             = "eth1"    #"${var.policy_prefix}-eth1-2"  #Need unique index per netcon
   order            = 1                  # must be unique across all vNic and vHBA
   failover_enabled = false
   mac_address_type = "POOL"
