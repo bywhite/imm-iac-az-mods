@@ -48,6 +48,25 @@ variable "server_ports_6536" {
     "10" = 5
   }
 }
+
+variable "chassis_assignment" {
+  type        = "map"
+  description = "map of port numbers to chassis numbers"
+  default     = {
+    "1"  = 1
+    "2"  = 1
+    "3"  = 2
+    "4"  = 2
+    "5"  = 3
+    "6"  = 3
+    "7"  = 4
+    "8"  = 4
+    "9"  = 5
+    "10" = 5
+  }
+}
+
+
 */
 
 variable "server_ports_6536" {

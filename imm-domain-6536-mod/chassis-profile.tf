@@ -20,6 +20,10 @@ resource "intersight_chassis_profile" "chassis_9508_profile" {
     control_action = "No-op" # Options: No-op, ConfigChange, Deploy, Unbind
     error_state    = ""      # Option: Validation-error
   }
+  # # If you change 
+  # assigned_chassis {
+  #   selector = "Serial eq '${each.value}'"
+  # }
   organization {
     object_type = "organization.Organization"
     moid        = var.organization

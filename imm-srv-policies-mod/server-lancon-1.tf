@@ -48,6 +48,8 @@ resource "intersight_vnic_eth_if" "eth0_1" {
     moid = var.mac_pool_moid
   }
   placement {
+    # auto_pci_link = true                   # Only applies to 13xx series VICs
+    # auto_slot_id  = true                   # vNics applied to first VIC automatically if enabled
     id        = "MLOM"                       # MLOM is same as slot 1 Range is (1-15) and MLOM
     pci_link  = 0                            # Ignored value for all but VIC1380
     switch_id = "A"
