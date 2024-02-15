@@ -43,6 +43,8 @@ resource "intersight_vnic_eth_adapter_policy" "v_eth_adapter1" {
       value = tags.value.value
     }
   }
+
+  
 }
 
 
