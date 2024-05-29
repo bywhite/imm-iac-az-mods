@@ -35,8 +35,7 @@ resource "intersight_server_profile_template" "server_template_1" {
   # the following policy_bucket statements map various policies to this
   # template -- the object_type shows the policy type
   policy_bucket {
-    #moid        = intersight_boot_precision_policy.boot_precision_1.moid
-    moid        = var.boot_policy
+    moid        = intersight_boot_precision_policy.boot_precision_1.moid
     object_type = "boot.PrecisionPolicy"
   }
  policy_bucket {

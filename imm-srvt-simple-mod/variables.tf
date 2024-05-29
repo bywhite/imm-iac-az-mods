@@ -184,7 +184,7 @@ variable "syslog_remote_ip"  {
 #   default     = ""
 # }
 
-variable "boot_policy" {
-  type        = string
-  description = "Sets shared boot policy MOID to be used"
-}
+# variable "boot_policy" {
+#   type        = string
+#   description = "Sets shared boot policy MOID to be used"
+# }
